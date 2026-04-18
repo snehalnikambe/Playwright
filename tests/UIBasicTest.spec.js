@@ -31,21 +31,17 @@ await expect(page).toHaveTitle('Google');
 }
 );
 
-test.only('UI controls',async ({page})=>
+test('UI controls',async ({page})=>
 {
-await page.goto("https://rahulshettyacademy.com/loginpagePractise/");    
-//const dropdown = page.locator("select.form-control");
-//await dropdown.selectOption("consult");
-//await page.pause();
-//await page.locator(".checkmark").last().click();
+    
+await page.goto("https://rahulshettyacademy.com/loginpagePractise/");   
 await page.locator(".radiotextsty").last().click();
 await page.locator("#okayBtn").click();
 await expect(page.locator(".radiotextsty").last()).toBeChecked();
-//console(page.locator(".radiotextsty").last().isChecked());
+await page.locator("#terms").click(); 
 await expect(page.locator("#terms")).toBeChecked();
 await page.locator("#terms").uncheck();
-//expect(page.locator("#terms").isChecked()).toBeFalsy();
-
+expect(await page.locator("#terms").isChecked()).toBeFalsy(); 
 
 }
 );
